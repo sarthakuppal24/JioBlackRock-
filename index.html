@@ -117,6 +117,29 @@
       color: var(--black);
     }
 
+    .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0.9) contrast(1.1);
+  transition: var(--transition);
+}
+
+.nav-logo-img:hover {
+  filter: brightness(1.2);
+}
+
+/* Optional: make SIF slightly smaller if needed */
+.nav-logo-img.sif {
+  height:96px;
+}
+
     /* ─── HERO ───────────────────────────────────────────────────────────── */
     #hero {
       min-height: 100vh;
@@ -149,8 +172,8 @@
       width: 60px;
       height: 60px;
     }
-    .hero-corner.tl { top: 80px; left: 48px; border-top: 1px solid var(--gold-line); border-left: 1px solid var(--gold-line); }
-    .hero-corner.tr { top: 80px; right: 48px; border-top: 1px solid var(--gold-line); border-right: 1px solid var(--gold-line); }
+    .hero-corner.tl { top: 120px; left: 48px; border-top: 1px solid var(--gold-line); border-left: 1px solid var(--gold-line); }
+    .hero-corner.tr { top: 120px; right: 48px; border-top: 1px solid var(--gold-line); border-right: 1px solid var(--gold-line); }
     .hero-corner.bl { bottom: 48px; left: 48px; border-bottom: 1px solid var(--gold-line); border-left: 1px solid var(--gold-line); }
     .hero-corner.br { bottom: 48px; right: 48px; border-bottom: 1px solid var(--gold-line); border-right: 1px solid var(--gold-line); }
 
@@ -184,14 +207,18 @@
 
     .hero-tagline {
       font-family: var(--font-serif);
-      font-size: clamp(0.85rem, 2vw, 1.1rem);
-      font-weight: 300;
+      font-size: clamp(2rem, 2vw, 1.1rem);
+      font-weight: 700;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--white-dim);
       margin-bottom: 36px;
       opacity: 0;
       animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+
+       .hero-tagline em {
+      color: var(--gold);
     }
 
     .hero-divider {
@@ -790,10 +817,15 @@
   <nav id="nav">
     <div class="nav-logo">JioBlackRock</div>
     <div class="nav-tag">Powered by SIF360</div>
-    <a onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})" class="nav-cta" style="cursor:pointer;">Register Now</a>
+  
+    <div class="nav-right">
+      <img src="jioblackrocklogo.png" alt="JioBlackRock" class="nav-logo-img">
+      <img src="sif360logo.png" alt="SIF360" class="nav-logo-img sif">
+    </div>
   </nav>
 
   <!-- HERO -->
+  
   <section id="hero">
     <div class="hero-corner tl"></div>
     <div class="hero-corner tr"></div>
@@ -804,7 +836,7 @@
 
     <h1 class="hero-title">JioBlackRock Partner <em>Privé</em></h1>
 
-    <p class="hero-tagline">Powered by SIF360</p>
+    <p class="hero-tagline">Powered by <em>SIF360</em></p>
 
     <div class="hero-divider">
       <span></span>
@@ -837,9 +869,9 @@
           <div class="detail-icon">
             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
-          <p class="detail-label">Date</p>
-          <p class="detail-value">7th May 2026</p>
-          <p class="detail-sub">Wednesday Evening</p>
+          <p class="detail-label">Date & Time</p>
+          <p class="detail-value">7th May 2026, 6 pm Onwards</p>
+          <p class="detail-sub">Wednesday Evening Followed by Dinner</p>
         </div>
 
         <div class="detail-card reveal">
@@ -848,7 +880,7 @@
           </div>
           <p class="detail-label">Venue</p>
           <p class="detail-value">The Lalit</p>
-          <p class="detail-sub">New Delhi</p>
+          <p class="detail-sub">Connaught Place, New Delhi</p>
         </div>
 
         <div class="detail-card reveal">
@@ -966,11 +998,11 @@
               <div class="select-wrap">
                 <select id="aum" name="aum">
                   <option value="" disabled selected>Select AUM range</option>
-                  <option value="0-10Cr">₹0 – ₹10 Cr</option>
-                  <option value="10-25Cr">₹10 Cr – ₹25 Cr</option>
-                  <option value="25-100Cr">₹25 Cr – ₹100 Cr</option>
-                  <option value="100-500Cr">₹100 Cr – ₹500 Cr</option>
-                  <option value="500Cr+">₹500 Cr and above</option>
+                  <option value="0-10Cr">₹x1 – ₹25 Cr</option>
+                  <option value="10-25Cr">₹25 Cr – ₹100 Cr</option>
+                  <option value="25-100Cr">₹100 Cr – ₹500 Cr</option>
+                  <option value="100-500Cr">₹500 Cr – ₹1000 Cr</option>
+                  <option value="500Cr+">₹1000 Cr and above</option>
                 </select>
               </div>
               <span class="error-msg" id="err-aum">Please select your AUM range.</span>
