@@ -1011,7 +1011,7 @@
     }
  
     // Attach live-clear listeners
-    ['fullName','email','phone','city','arn','aum'].forEach(id => {
+    ['fullName','email','phone','city','arn'].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
       const evtName = el.tagName === 'SELECT' ? 'change' : 'input';
@@ -1033,7 +1033,6 @@
       const trainingEl = document.querySelector('input[name="training_interest"]:checked');
       const training   = nism === 'No' ? (trainingEl?.value || '') : '';
       const arn   = document.getElementById('arn').value.trim();
-      const aum   = document.getElementById('aum').value;
  
       // ── Validate
       let valid = true;
@@ -1050,7 +1049,6 @@
         document.getElementById('err-nism').classList.remove('visible');
       }
       if (!arn) { setError('arn','err-arn',true); valid=false; }
-      if (!aum) { setError('aum','err-aum',true); valid=false; }
  
       if (!valid) return;
  
@@ -1059,7 +1057,7 @@
       btn.disabled = true;
       btn.textContent = 'Submitting…';
  
-      const payload = { name, email, phone, city, nism, training_interest: training, arn, aum };
+      const payload = { name, email, phone, city, nism, training_interest: training, arn};
       console.log('[JioBlackRock Privé] Submitting payload:', payload);
  
       try {
